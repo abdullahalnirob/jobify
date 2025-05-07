@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui";
+* {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #1c2229;
+  scroll-behavior: smooth;
+}
+
+

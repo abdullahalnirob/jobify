@@ -1,0 +1,210 @@
+[
+  {
+    "id": "1",
+    "name": "TechNova",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKPw9oPtACUyirailannNCZJgq_ZFee9Mc8g&s",
+    "location": "San Francisco, CA",
+    "website": "https://technova.com",
+    "industry": "Software Development",
+    "jobs": [
+      {
+        "id": "job-001",
+        "title": "Frontend Developer",
+        "bannerImage": "https://example.com/banners/frontend.png",
+        "location": "Remote",
+        "salary": "$80,000 - $100,000",
+        "jobType": "Full-time",
+        "description": "Develop intuitive UIs for our web apps.",
+        "requirements": [
+          "Proficient in HTML, CSS, and JavaScript",
+          "Experience with React or Vue.js",
+          "Familiarity with RESTful APIs",
+          "Good understanding of responsive design",
+          "Excellent problem-solving skills"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "DataCraft",
+    "logo": "https://media.licdn.com/dms/image/v2/C561BAQF4tnW9mgvwwA/company-background_10000/company-background_10000/0/1625486067542/datacraft_cover?e=2147483647&v=beta&t=D6INsh3lXrASZZhrB0W8KORhI9yLBsObxhYN16Yt0Wg",
+    "location": "New York, NY",
+    "website": "https://datacraft.io",
+    "industry": "Data Analytics",
+    "jobs": [
+      {
+        "id": "job-002",
+        "title": "Data Scientist",
+        "bannerImage": "https://example.com/banners/data.png",
+        "location": "New York, NY",
+        "salary": "$110,000 - $130,000",
+        "jobType": "Full-time",
+        "description": "Analyze big data to support business decisions.",
+        "requirements": [
+          "Strong knowledge of Python and R",
+          "Experience with machine learning libraries",
+          "Understanding of statistics and data modeling",
+          "Familiarity with SQL",
+          "Excellent analytical skills"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "CloudCore",
+    "logo": "https://cloudcoresystems.com/wp-content/uploads/2019/12/logo-01.png",
+    "location": "Seattle, WA",
+    "website": "https://cloudcore.io",
+    "industry": "Cloud Computing",
+    "jobs": [
+      {
+        "id": "job-003",
+        "title": "Cloud Engineer",
+        "bannerImage": "https://example.com/banners/cloud.png",
+        "location": "Seattle, WA",
+        "salary": "$105,000 - $125,000",
+        "jobType": "Full-time",
+        "description": "Build and maintain scalable cloud infrastructure.",
+        "requirements": [
+          "Experience with AWS or Azure",
+          "Proficient in Python or Go",
+          "Knowledge of CI/CD pipelines",
+          "Strong understanding of networking",
+          "Problem-solving mindset"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "CyberSecure",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDjM824UbnvPCdBTGv1hVUmuaG_k7vzNI7Mg&s",
+    "location": "Austin, TX",
+    "website": "https://cybersecure.com",
+    "industry": "Cybersecurity",
+    "jobs": [
+      {
+        "id": "job-004",
+        "title": "Security Analyst",
+        "bannerImage": "https://example.com/banners/security.png",
+        "location": "Austin, TX",
+        "salary": "$95,000 - $115,000",
+        "jobType": "Full-time",
+        "description": "Monitor and protect organizational systems from threats.",
+        "requirements": [
+          "Knowledge of network security protocols",
+          "Experience with SIEM tools",
+          "Ability to conduct threat assessments",
+          "Understanding of compliance standards",
+          "Strong analytical thinking"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "GreenTech",
+    "logo": "https://raicdn.nl/cdn-cgi/image/width=3840,quality=75,format=auto,sharpen=1/https://edge.sitecorecloud.io/raiamsterda13f7-raidigitalpdb6c-productionf3f5-ef30/media/project/rai-amsterdam-xmc/greentech/greentech/logo/grd-logo/download/grd24-jpg.jpg",
+    "location": "Denver, CO",
+    "website": "https://greentech.com",
+    "industry": "Clean Energy",
+    "jobs": [
+      {
+        "id": "job-005",
+        "title": "IoT Engineer",
+        "bannerImage": "https://example.com/banners/iot.png",
+        "location": "Denver, CO",
+        "salary": "$90,000 - $110,000",
+        "jobType": "Full-time",
+        "description": "Design IoT solutions for energy-efficient systems.",
+        "requirements": [
+          "Experience with embedded systems",
+          "Knowledge of C/C++",
+          "Familiarity with MQTT and Zigbee",
+          "Understanding of power management",
+          "Collaborative team skills"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "MediSoft",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-k2Ur9QifwIdryGL620ocDCLwVyYQnNeOfA&s",
+    "location": "Chicago, IL",
+    "website": "https://medisoft.io",
+    "industry": "Healthcare Software",
+    "jobs": [
+      {
+        "id": "job-006",
+        "title": "Backend Developer",
+        "bannerImage": "https://example.com/banners/backend.png",
+        "location": "Remote",
+        "salary": "$100,000 - $120,000",
+        "jobType": "Full-time",
+        "description": "Develop APIs and backend logic for health systems.",
+        "requirements": [
+          "Proficient in Node.js or Django",
+          "Experience with PostgreSQL or MongoDB",
+          "RESTful API development",
+          "Knowledge of HIPAA compliance",
+          "Team-oriented mindset"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "FinEdge",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROWQSYegG4RzUCjSjmP-_qoVH4-8UECbk5CQ&s",
+    "location": "Boston, MA",
+    "website": "https://finedge.com",
+    "industry": "Fintech",
+    "jobs": [
+      {
+        "id": "job-007",
+        "title": "DevOps Engineer",
+        "bannerImage": "https://example.com/banners/devops.png",
+        "location": "Boston, MA",
+        "salary": "$105,000 - $130,000",
+        "jobType": "Full-time",
+        "description": "Implement CI/CD and infrastructure automation.",
+        "requirements": [
+          "Experience with Docker and Kubernetes",
+          "Familiarity with Jenkins, GitLab CI",
+          "Strong Linux skills",
+          "Infrastructure as Code (Terraform, Ansible)",
+          "Cloud deployment experience"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "EduNext",
+    "logo": "https://edunext-main-storage-cf.edunexttechnologies.com/dpsmeerut/school___static/1705731943271_images.png",
+    "location": "Toronto, Canada",
+    "website": "https://edunext.org",
+    "industry": "EdTech",
+    "jobs": [
+      {
+        "id": "job-008",
+        "title": "UI/UX Designer",
+        "bannerImage": "https://example.com/banners/uiux.png",
+        "location": "Toronto, Canada",
+        "salary": "$85,000 - $105,000",
+        "jobType": "Full-time",
+        "description": "Create engaging and user-friendly educational interfaces.",
+        "requirements": [
+          "Experience with Figma or Adobe XD",
+          "Strong portfolio of design projects",
+          "Understanding of accessibility standards",
+          "Knowledge of design systems",
+          "Team communication skills"
+        ]
+      }
+    ]
+  }
+]

@@ -7,8 +7,8 @@ const Root = () => {
   return (
     <div className="">
       <Hero />
-      <HowItWorks />
       <CompanySection />
+      <HowItWorks />
     </div>
   );
 };

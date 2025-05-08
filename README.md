@@ -25,6 +25,7 @@ Job Track is an innovative and user-friendly web application designed to streaml
 - **Tailwind CSS** – For styling and responsive design
 - **dotenv** – To manage environment variables (if applicable)
 - **Firebase** – For Authentication
+- **Framer-Motion** – For Animation
 
 > Add or remove packages as necessary depending on your implementation.
 

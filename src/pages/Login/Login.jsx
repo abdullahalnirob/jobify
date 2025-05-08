@@ -9,6 +9,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const emailRef = useRef();
@@ -23,7 +24,7 @@ const Login = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  
+
   const handleLogin = () => {
     if (!email || !password) {
       toast.error("Please enter both email and password.");
@@ -72,6 +73,11 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1c2229] to-[#0f1316] flex flex-col items-center justify-center p-4">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login your account | Jobify</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-64 h-64 bg-green-500/10 rounded-full blur-3xl"></div>

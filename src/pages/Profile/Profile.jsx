@@ -11,6 +11,7 @@ import {
   Check,
 } from "lucide-react";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const { user, updateUser } = useContext(AuthContext);
@@ -38,6 +39,11 @@ const Profile = () => {
 
   return (
     <div className="min-h-[90vh] bg-gradient-to-br from-slate-900 to-slate-800 text-white flex justify-center items-center p-4">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Your Profile | Jobify</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="w-full max-w-4xl transition-all duration-300 ease-in-out">
         <div className="border border-slate-700 bg-slate-800/40 backdrop-blur-md shadow-xl overflow-hidden rounded-xl flex flex-col md:flex-row">
           <div className="md:w-1/3 bg-gradient-to-br from-slate-800 to-slate-900 border-r border-slate-700/50 p-6 flex flex-col items-center justify-center relative">

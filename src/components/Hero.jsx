@@ -1,10 +1,15 @@
 import { Briefcase, TrendingUp } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 const Hero = () => {
   return (
     <section className="relative py-20 px-6 md:px-20 bg-gray-900 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"></div>
-
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home | Jobify</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="absolute top-20 right-10 w-72 h-72 bg-green-600/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-green-600/5 rounded-full blur-3xl"></div>
 

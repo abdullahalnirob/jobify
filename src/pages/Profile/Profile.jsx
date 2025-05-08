@@ -1,9 +1,40 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { CalendarIcon, Mail, Phone, Shield, Clock } from "lucide-react";
+import {
+  CalendarIcon,
+  Mail,
+  Phone,
+  Shield,
+  Clock,
+  Edit,
+  X,
+  Check,
+} from "lucide-react";
+import { toast } from "react-toastify";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, updateUser } = useContext(AuthContext);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newName, setNewName] = useState(user?.displayName || "");
+  const [newPhotoURL, setNewPhotoURL] = useState(user?.photoURL || "");
+
+  const handleUpdate = () => {
+    updateUser({ ...user, displayName: newName, photoURL: newPhotoURL })
+      .then(() => {
+        toast.success("Profile updated successfully!");
+        setIsEditing(false);
+      })
+      .catch((err) => {
+        toast.error("Failed to update profile!");
+        console.error(err);
+      });
+  };
+
+  const handleCancel = () => {
+    setNewName(user?.displayName || "");
+    setNewPhotoURL(user?.photoURL || "");
+    setIsEditing(false);
+  };
 
   return (
     <div className="min-h-[90vh] bg-gradient-to-br from-slate-900 to-slate-800 text-white flex justify-center items-center p-4">
@@ -13,7 +44,7 @@ const Profile = () => {
             <div className="relative mb-4">
               <div className="absolute inset-0 rounded-full"></div>
               <img
-                src={user?.photoURL}
+                src={user?.photoURL || "/placeholder.svg"}
                 alt="User"
                 className="w-28 h-28 rounded-full object-cover border-4 border-slate-800 bg-slate-700 relative z-10"
               />
@@ -106,6 +137,71 @@ const Profile = () => {
                   </div>
                 </div>
               )}
+            </div>
+            <div className="mt-4 relative overflow-hidden">
+              <div
+                className={`transition-all duration-300 ease-in-out ${
+                  isEditing
+                    ? "opacity-0 transform translate-y-2 pointer-events-none h-0"
+                    : "opacity-100 h-10"
+                }`}
+              >
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className="flex cursor-pointer items-center gap-1.5 px-3 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-md border border-emerald-500/30 text-sm hover:bg-emerald-500/30 transition-colors"
+                >
+                  <Edit className="w-3.5 h-3.5" />
+                  Update Profile
+                </button>
+              </div>
+              <div
+                className={`transition-all duration-300 ease-in-out ${
+                  isEditing
+                    ? "opacity-100 max-h-96 transform translate-y-0"
+                    : "opacity-0 max-h-0 transform -translate-y-4 pointer-events-none"
+                }`}
+              >
+                <div className="w-full space-y-3 origin-top">
+                  <div className="space-y-2">
+                    <label className="text-xs text-slate-400">
+                      Display Name
+                    </label>
+                    <input
+                      type="text"
+                      value={newName}
+                      onChange={(e) => setNewName(e.target.value)}
+                      className="w-full bg-slate-700/50 border border-slate-600 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs text-slate-400">Photo URL</label>
+                    <input
+                      type="text"
+                      value={newPhotoURL}
+                      onChange={(e) => setNewPhotoURL(e.target.value)}
+                      className="w-full bg-slate-700/50 border border-slate-600 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500"
+                      placeholder="Enter photo URL"
+                    />
+                  </div>
+                  <div className="flex gap-2 pt-2">
+                    <button
+                      onClick={handleUpdate}
+                      className="flex-1 cursor-pointer flex items-center justify-center gap-1 px-3 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-md border border-emerald-500/30 text-sm hover:bg-emerald-500/30 transition-colors"
+                    >
+                      <Check className="w-3.5 h-3.5" />
+                      Save
+                    </button>
+                    <button
+                      onClick={handleCancel}
+                      className="flex-1 cursor-pointer flex items-center justify-center gap-1 px-3 py-1.5 bg-red-500/20 text-red-400 rounded-md border border-red-500/30 text-sm hover:bg-red-500/30 transition-colors"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

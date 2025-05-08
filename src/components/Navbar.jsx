@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Provider/AuthProvider";
-import { FiMenu, FiX } from "react-icons/fi";
-import { toast } from "react-toastify";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { AuthContext } from "../Provider/AuthProvider"
+import { FiMenu, FiX } from "react-icons/fi"
+import { toast } from "react-toastify"
+import { motion, AnimatePresence } from "framer-motion"
 
 const Navbar = () => {
-  const { user, signOutUser } = React.useContext(AuthContext);
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
+  const { user, signOutUser } = React.useContext(AuthContext)
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!isOpen)
 
   const handleSignOut = () => {
     signOutUser()
       .then(() => {
-        toast.success("Signout successfully!");
-        navigate("/auth/login");
+        toast.success("Signout successfully!")
+        navigate("/auth/login")
       })
       .catch(() => {
-        toast.error("Signout failed. Please try again.");
-      });
-  };
+        toast.error("Signout failed. Please try again.")
+      })
+  }
 
   const navbarVariants = {
     initial: { backgroundColor: "rgba(23, 29, 34, 1)" },
@@ -39,13 +39,18 @@ const Navbar = () => {
       backdropFilter: "blur(10px)",
       boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
     },
-  };
+  }
 
   const mobileMenuVariants = {
     closed: {
       opacity: 0,
       height: 0,
-      transition: { duration: 0.3, when: "afterChildren" },
+      transition: {
+        duration: 0.3,
+        when: "afterChildren",
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
     },
     open: {
       opacity: 1,
@@ -54,18 +59,32 @@ const Navbar = () => {
         duration: 0.3,
         when: "beforeChildren",
         staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
-  };
+  }
 
   const menuItemVariants = {
-    closed: { opacity: 0, y: -10, transition: { duration: 0.2 } },
-    open: { opacity: 1, y: 0, transition: { duration: 0.2 } },
-  };
+    closed: {
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.2 },
+    },
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 24,
+        duration: 0.4,
+      },
+    },
+  }
 
   const logoVariants = {
     hover: { scale: 1.05, transition: { duration: 0.2 } },
-  };
+  }
 
   return (
     <motion.nav
@@ -77,13 +96,11 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
         <div className="flex items-center justify-between h-20">
-          <motion.div
+          <Link to="/"
             className="flex items-center text-2xl font-bold text-white"
-            variants={logoVariants}
-            whileHover="hover"
           >
-            <span className="text-green-500 mr-1">Job</span>ify
-          </motion.div>
+            <span className="text-green-500">Job</span>ify
+          </Link>
 
           <div className="hidden md:flex items-center space-x-6">
             {user ? (
@@ -93,7 +110,7 @@ const Navbar = () => {
               >
                 {user?.photoURL && (
                   <img
-                    src={user.photoURL}
+                    src={user.photoURL || "/placeholder.svg"}
                     alt="User"
                     className="h-8 w-8 rounded-full object-cover border border-gray-600"
                   />
@@ -110,20 +127,14 @@ const Navbar = () => {
               </motion.div>
             )}
 
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Link
-                to="/"
-                className="text-white hover:text-green-500 duration-200"
-              >
+            <motion.div>
+              <Link to="/" className="text-white hover:text-green-500 duration-200">
                 Home
               </Link>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Link
-                to="/profile"
-                className="text-white hover:text-green-500 duration-200"
-              >
+            <motion.div>
+              <Link to="/profile" className="text-white hover:text-green-500 duration-200">
                 My Profile
               </Link>
             </motion.div>
@@ -142,7 +153,7 @@ const Navbar = () => {
               <div className="md:hidden">
                 {user?.photoURL && (
                   <img
-                    src={user.photoURL}
+                    src={user.photoURL || "/placeholder.svg"}
                     alt="User"
                     className="h-8 w-8 rounded-full object-cover border border-gray-600"
                   />
@@ -176,10 +187,13 @@ const Navbar = () => {
             {user && (
               <motion.div
                 variants={menuItemVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
                 className="flex items-center gap-3 bg-slate-700/70 text-white px-4 py-2 rounded-full mt-2 backdrop-blur-sm"
               >
                 <img
-                  src={user.photoURL}
+                  src={user.photoURL || "/placeholder.svg"}
                   alt="User"
                   className="h-8 w-8 rounded-full object-cover border border-gray-600"
                 />
@@ -187,37 +201,51 @@ const Navbar = () => {
               </motion.div>
             )}
 
-            <motion.div variants={menuItemVariants}>
-              <Link
-                to="/"
-                className="block text-white hover:text-green-500 duration-200 py-2"
-              >
+            <motion.div
+              variants={menuItemVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className="overflow-hidden"
+            >
+              <Link to="/" className="block text-white hover:text-green-500 duration-200 py-2">
                 Home
               </Link>
             </motion.div>
 
-            <motion.div variants={menuItemVariants}>
-              <Link
-                to="/profile"
-                className="block text-white hover:text-green-500 duration-200 py-2"
-              >
+            <motion.div
+              variants={menuItemVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className="overflow-hidden"
+            >
+              <Link to="/profile" className="block text-white hover:text-green-500 duration-200 py-2">
                 My Profile
               </Link>
             </motion.div>
 
-            <motion.button
+            <motion.div
               variants={menuItemVariants}
-              onClick={handleSignOut}
-              className="w-full py-3 cursor-pointer rounded-full bg-green-600 text-white hover:bg-green-700 duration-200"
-              whileTap={{ scale: 0.95 }}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className="overflow-hidden"
             >
-              Log out
-            </motion.button>
+              <motion.button
+                onClick={handleSignOut}
+                className="w-full py-3 cursor-pointer rounded-full bg-green-600 text-white hover:bg-green-700 duration-200"
+                whileHover={{ scale: 1.03, backgroundColor: "#15803d" }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Log out
+              </motion.button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

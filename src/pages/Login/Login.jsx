@@ -1,16 +1,21 @@
-import React, { useState, use } from "react";
+import React, { useState, use, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { Mail, Lock, LogIn, ArrowRight, User } from "lucide-react";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  sendPasswordResetEmail,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 
 const Login = () => {
+  const emailRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { SignIn,setUser } = use(AuthContext);
+  const { SignIn, setUser } = use(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -43,6 +48,20 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+
+  const handleForgetPassword = () => {
+    // alert(emailRef.current.value)
+    const email = emailRef.current.value;
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toast.success(
+          "A password reset email is send. Please Check your email!"
+        );
+      })
+      .catch(() => {
+        toast.error("Email field empy or Something error!");
       });
   };
 
@@ -82,6 +101,7 @@ const Login = () => {
                 </label>
                 <div className="relative">
                   <input
+                    ref={emailRef}
                     id="email"
                     placeholder="Enter your email"
                     type="email"
@@ -101,12 +121,12 @@ const Login = () => {
                     <Lock className="h-4 w-4 text-green-500" />
                     Password
                   </label>
-                  <Link
-                    to="/forgot-password"
-                    className="text-green-500 hover:text-green-400 text-xs font-medium transition-colors"
+                  <p
+                    onClick={handleForgetPassword}
+                    className="text-green-500 cursor-pointer hover:text-green-400 text-xs font-medium transition-colors"
                   >
                     Forgot Password?
-                  </Link>
+                  </p>
                 </div>
                 <div className="relative">
                   <input

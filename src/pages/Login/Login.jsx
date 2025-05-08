@@ -2,7 +2,7 @@ import React, { useState, use, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-toastify";
-import { Mail, Lock, LogIn, ArrowRight, User } from "lucide-react";
+import { Mail, Lock, LogIn, ArrowRight, User, EyeOff, Eye } from "lucide-react";
 import {
   GoogleAuthProvider,
   sendPasswordResetEmail,
@@ -16,8 +16,14 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { SignIn, setUser } = use(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  
   const handleLogin = () => {
     if (!email || !password) {
       toast.error("Please enter both email and password.");
@@ -52,7 +58,6 @@ const Login = () => {
   };
 
   const handleForgetPassword = () => {
-    // alert(emailRef.current.value)
     const email = emailRef.current.value;
     sendPasswordResetEmail(auth, email)
       .then(() => {
@@ -131,12 +136,26 @@ const Login = () => {
                 <div className="relative">
                   <input
                     id="password"
-                    placeholder="Enter your password"
-                    type="password"
+                    placeholder="Create a strong password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full py-3 px-4 rounded-xl outline-none bg-[#1c2229] text-white text-sm border border-gray-700/50 focus:border-green-500/50 transition-all duration-200 focus:ring-2 focus:ring-green-500/20"
+                    className="w-full py-3 px-4 rounded-xl outline-none bg-[#1c2229] text-white text-sm border border-gray-700/50 focus:border-green-500/50 transition-all duration-200 focus:ring-2 focus:ring-green-500/20 pr-12"
                   />
+                  <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="absolute cursor-pointer right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-green-500 transition-colors p-1"
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5" />
+                    ) : (
+                      <Eye className="h-5 w-5" />
+                    )}
+                  </button>
                 </div>
               </div>
 

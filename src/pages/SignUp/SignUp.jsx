@@ -1,89 +1,93 @@
-import { use, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { toast } from "react-toastify";
-import {
-  Mail,
-  Lock,
-  User,
-  ImageIcon,
-  ArrowRight,
-  UserPlus,
-} from "lucide-react";
-import { signInWithPopup } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../../firebase/firebase.config";
+"use client"
+
+import { use, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { AuthContext } from "../../Provider/AuthProvider"
+import { toast } from "react-toastify"
+import { Mail, Lock, User, ImageIcon, ArrowRight, UserPlus, Eye, EyeOff } from "lucide-react"
+import { signInWithPopup } from "firebase/auth"
+import { GoogleAuthProvider } from "firebase/auth"
+import { auth } from "../../firebase/firebase.config"
 
 const SignUp = () => {
-  const { createUser, setUser, updateUser } = use(AuthContext);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [photo, setPhotoURL] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const { createUser, setUser, updateUser } = use(AuthContext)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [photo, setPhotoURL] = useState("")
+  const [password, setPassword] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const navigate = useNavigate()
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
 
   const handleSignUp = () => {
     if (!name || !email || !password) {
-      toast.error("Please fill in all required fields.");
-      return;
+      toast.error("Please fill in all required fields.")
+      return
     }
 
-    // Password validation
-    const hasUppercase = /[A-Z]/.test(password);
-    const hasLowercase = /[a-z]/.test(password);
-    const isLongEnough = password.length >= 6;
 
+
+
+    const hasUppercase = /[A-Z]/.test(password)
+    const hasLowercase = /[a-z]/.test(password)
+    const isLongEnough = password.length >= 6
+
+
+    
     if (!hasUppercase) {
-      toast.error("Password must include at least one uppercase letter.");
-      return;
+      toast.error("Password must include at least one uppercase letter.")
+      return
     }
     if (!hasLowercase) {
-      toast.error("Password must include at least one lowercase letter.");
-      return;
+      toast.error("Password must include at least one lowercase letter.")
+      return
     }
     if (!isLongEnough) {
-      toast.error("Password must be at least 6 characters long.");
-      return;
+      toast.error("Password must be at least 6 characters long.")
+      return
     }
 
-    setIsLoading(true);
+    setIsLoading(true)
     createUser(email, password)
       .then((result) => {
-        toast.success("Account Sign up Successful");
-        const user = result.user;
+        toast.success("Account Sign up Successful")
+        const user = result.user
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
-            setUser({ ...user, displayName: name, photoURL: photo });
+            setUser({ ...user, displayName: name, photoURL: photo })
           })
           .catch(() => {
-            setUser(result.user);
-          });
-        navigate("/");
+            setUser(result.user)
+          })
+        navigate("/")
       })
       .catch((error) => {
-        toast.error("Account creation failed!");
+        toast.error("Account creation failed!")
       })
       .finally(() => {
-        setIsLoading(false);
-      });
-  };
+        setIsLoading(false)
+      })
+  }
 
-  const provider = new GoogleAuthProvider();
+  const provider = new GoogleAuthProvider()
 
   const SignInWithGoogle = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
-        setUser(user);
-        toast.success("Google Sign-in Successful!");
-        navigate("/");
+        const user = result.user
+        setUser(user)
+        toast.success("Google Sign-in Successful!")
+        navigate("/")
       })
       .catch((err) => {
-        console.log(err);
-        toast.error("Google Sign-in failed.");
-      });
-  };
+        console.log(err)
+        toast.error("Google Sign-in failed.")
+      })
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#1c2229] to-[#0f1316] flex flex-col items-center justify-center p-4">
@@ -101,20 +105,13 @@ const SignUp = () => {
 
         <div className="bg-[#0f1316]/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-800/50 overflow-hidden">
           <div className="px-8 pt-8 pb-4">
-            <h1 className="text-3xl font-bold text-white text-center mb-2">
-              Create Account
-            </h1>
-            <p className="text-gray-400 text-center text-sm">
-              Join Jobify to find your dream job
-            </p>
+            <h1 className="text-3xl font-bold text-white text-center mb-2">Create Account</h1>
+            <p className="text-gray-400 text-center text-sm">Join Jobify to find your dream job</p>
           </div>
           <div className="p-8 pt-4">
             <div className="space-y-4">
               <div className="space-y-2">
-                <label
-                  htmlFor="name"
-                  className="text-sm font-medium text-gray-300 flex items-center gap-2"
-                >
+                <label htmlFor="name" className="text-sm font-medium text-gray-300 flex items-center gap-2">
                   <User className="h-4 w-4 text-green-500" />
                   Full Name
                 </label>
@@ -131,10 +128,7 @@ const SignUp = () => {
               </div>
 
               <div className="space-y-2">
-                <label
-                  htmlFor="email"
-                  className="text-sm font-medium text-gray-300 flex items-center gap-2"
-                >
+                <label htmlFor="email" className="text-sm font-medium text-gray-300 flex items-center gap-2">
                   <Mail className="h-4 w-4 text-green-500" />
                   Email Address
                 </label>
@@ -151,10 +145,7 @@ const SignUp = () => {
               </div>
 
               <div className="space-y-2">
-                <label
-                  htmlFor="photoURL"
-                  className="text-sm font-medium text-gray-300 flex items-center gap-2"
-                >
+                <label htmlFor="photoURL" className="text-sm font-medium text-gray-300 flex items-center gap-2">
                   <ImageIcon className="h-4 w-4 text-green-500" />
                   Profile Photo URL
                 </label>
@@ -171,10 +162,7 @@ const SignUp = () => {
               </div>
 
               <div className="space-y-2">
-                <label
-                  htmlFor="password"
-                  className="text-sm font-medium text-gray-300 flex items-center gap-2"
-                >
+                <label htmlFor="password" className="text-sm font-medium text-gray-300 flex items-center gap-2">
                   <Lock className="h-4 w-4 text-green-500" />
                   Password
                 </label>
@@ -182,15 +170,21 @@ const SignUp = () => {
                   <input
                     id="password"
                     placeholder="Create a strong password"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full py-3 px-4 rounded-xl outline-none bg-[#1c2229] text-white text-sm border border-gray-700/50 focus:border-green-500/50 transition-all duration-200 focus:ring-2 focus:ring-green-500/20"
+                    className="w-full py-3 px-4 rounded-xl outline-none bg-[#1c2229] text-white text-sm border border-gray-700/50 focus:border-green-500/50 transition-all duration-200 focus:ring-2 focus:ring-green-500/20 pr-12"
                   />
+                  <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="absolute cursor-pointer right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-green-500 transition-colors p-1"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  </button>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  Password must be at least 6 characters long
-                </p>
+                <p className="text-xs text-gray-500 mt-1">Password must be at least 6 characters long</p>
               </div>
 
               <button
@@ -210,9 +204,7 @@ const SignUp = () => {
 
               <div className="relative flex items-center gap-2 py-4">
                 <div className="flex-grow h-px bg-gray-700/50"></div>
-                <span className="text-xs font-medium text-gray-400">
-                  OR CONTINUE WITH
-                </span>
+                <span className="text-xs font-medium text-gray-400">OR CONTINUE WITH</span>
                 <div className="flex-grow h-px bg-gray-700/50"></div>
               </div>
 
@@ -259,18 +251,13 @@ const SignUp = () => {
         <div className="text-center mt-8">
           <p className="text-gray-500 text-xs">
             By signing up, you agree to our{" "}
-            <Link className="text-green-500 hover:text-green-400 underline">
-              Terms of Service
-            </Link>{" "}
-            and{" "}
-            <Link className="text-green-500 hover:text-green-400 underline">
-              Privacy Policy
-            </Link>
+            <Link className="text-green-500 hover:text-green-400 underline">Terms of Service</Link> and{" "}
+            <Link className="text-green-500 hover:text-green-400 underline">Privacy Policy</Link>
           </p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

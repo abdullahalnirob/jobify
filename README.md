@@ -26,6 +26,7 @@ Job Track is an innovative and user-friendly web application designed to streaml
 - **dotenv** – To manage environment variables (if applicable)
 - **Firebase** – For Authentication
 - **Framer-Motion** – For Animation
+- **Rect-Helmet** – For Dynamic title
 
 > Add or remove packages as necessary depending on your implementation.
 

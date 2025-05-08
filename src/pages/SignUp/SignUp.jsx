@@ -29,6 +29,24 @@ const SignUp = () => {
       return;
     }
 
+    // Password validation
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const isLongEnough = password.length >= 6;
+
+    if (!hasUppercase) {
+      toast.error("Password must include at least one uppercase letter.");
+      return;
+    }
+    if (!hasLowercase) {
+      toast.error("Password must include at least one lowercase letter.");
+      return;
+    }
+    if (!isLongEnough) {
+      toast.error("Password must be at least 6 characters long.");
+      return;
+    }
+
     setIsLoading(true);
     createUser(email, password)
       .then((result) => {
@@ -36,7 +54,7 @@ const SignUp = () => {
         const user = result.user;
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
-            setUser({ ...user, displayName, photoURL });
+            setUser({ ...user, displayName: name, photoURL: photo });
           })
           .catch(() => {
             setUser(result.user);
@@ -57,7 +75,7 @@ const SignUp = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
-        setUser(user); // Use the info Google provides
+        setUser(user);
         toast.success("Google Sign-in Successful!");
         navigate("/");
       })

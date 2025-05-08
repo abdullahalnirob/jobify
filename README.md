@@ -1,13 +1,41 @@
-# React + Vite
+# Jobify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live URL:** [https://my-jobify.surge.sh/](https://my-jobify.surge.sh/)
 
-Currently, two official plugins are available:
+## 📌 Project Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Job Track is an innovative and user-friendly web application designed to streamline the job search process. It acts as a centralized hub for job seekers to explore a wide range of job listings across multiple companies. The platform enables users to:
 
-## Expanding the ESLint configuration
+- Browse and filter jobs based on various criteria
+- Review job descriptions and qualifications
+- Determine eligibility before applying
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# b11a9-react-authentication-abdullahalnirob
+## 🚀 Key Features
+
+- Select job listings by location, title, and company
+- Responsive, mobile-friendly design
+- Detailed job descriptions and requirements
+- Easy-to-navigate interface
+- Real-time updates to job listings
+
+## 📦 NPM Packages Used
+
+- **React** – Frontend library for building UI
+- **React Router DOM** – For client-side routing
+- **Tailwind CSS** – For styling and responsive design
+- **Yup** – Schema validation for forms
+- **dotenv** – To manage environment variables (if applicable)
+- **Firebase** – For Authentication
+
+> Add or remove packages as necessary depending on your implementation.
+
+## 🧪 Future Enhancements
+
+- User authentication and profiles
+- Save jobs or mark as favorites
+- Application tracking dashboard
+- Employer job posting portal
+
+---
+
+Feel free to fork, contribute, or suggest improvements. Happy job hunting!

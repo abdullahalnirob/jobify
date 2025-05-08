@@ -23,7 +23,6 @@ Job Track is an innovative and user-friendly web application designed to streaml
 - **React** – Frontend library for building UI
 - **React Router DOM** – For client-side routing
 - **Tailwind CSS** – For styling and responsive design
-- **Yup** – Schema validation for forms
 - **dotenv** – To manage environment variables (if applicable)
 - **Firebase** – For Authentication
 

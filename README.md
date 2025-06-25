@@ -28,15 +28,45 @@ Job Track is an innovative and user-friendly web application designed to streaml
 - **Framer-Motion** – For Animation
 - **Rect-Helmet** – For Dynamic title
 
-> Add or remove packages as necessary depending on your implementation.
 
-## 🧪 Future Enhancements
 
-- User authentication and profiles
-- Save jobs or mark as favorites
-- Application tracking dashboard
-- Employer job posting portal
-
----
 
 Feel free to fork, contribute, or suggest improvements. Happy job hunting!
+
+## Folder Structure
+
+```
+jobify/
+├── dist/                   # Production build output (auto-generated)
+├── node_modules/           # Project dependencies
+├── public/                 # Static assets
+├── src/                    # Source code
+│   ├── assets/             # Images, icons, and other static resources
+│   ├── components/         # Reusable UI components
+│   ├── firebase/           # Firebase configuration and functions
+│   ├── pages/              # Main pages/routes of the application
+│   ├── Provider/           # Context API or other state providers
+│   ├── Router/             # App routing configuration
+│   ├── App.jsx             # Root component
+│   ├── index.css           # Global styles
+│   └── main.jsx            # Entry point for React app
+├── .env.local              # Local environment variables
+├── .gitignore              # Git ignored files
+├── eslint.config.js        # ESLint configuration
+├── index.html              # HTML entry point
+├── package-lock.json       # Dependency lock file
+├── package.json            # Project metadata and scripts
+├── README.md               # Project documentation
+└── vite.config.js          # Vite configuration
+
+```
+
+
+## Installation
+
+```
+git clone https://github.com/abdullahalnirob/phudu.git
+cd phudu
+npm install
+npm run dev
+```

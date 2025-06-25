@@ -1,10 +1,10 @@
-"use client"
-import { Link } from "react-router-dom"
-import { FiGithub, FiTwitter, FiLinkedin, FiMail } from "react-icons/fi"
-import { motion } from "framer-motion"
+"use client";
+import { Link } from "react-router-dom";
+import { FiGithub, FiTwitter, FiLinkedin, FiMail } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   // Animation variants
   const footerVariants = {
@@ -17,19 +17,19 @@ const Footer = () => {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 },
-  }
+  };
 
   const logoVariants = {
     hover: {
       scale: 1.05,
       transition: { duration: 0.2 },
     },
-  }
+  };
 
   const socialIconVariants = {
     hover: {
@@ -37,7 +37,7 @@ const Footer = () => {
       color: "#22c55e",
       transition: { duration: 0.2 },
     },
-  }
+  };
 
   return (
     <motion.footer
@@ -50,7 +50,10 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and description */}
-          <motion.div className="col-span-1 md:col-span-2" variants={itemVariants}>
+          <motion.div
+            className="col-span-1 md:col-span-2"
+            variants={itemVariants}
+          >
             <motion.div
               className="flex items-center text-3xl font-bold mb-4"
               variants={logoVariants}
@@ -59,7 +62,8 @@ const Footer = () => {
               <span className="text-green-500 mr-1">Job</span>ify
             </motion.div>
             <p className="text-gray-400 mb-6 max-w-md">
-              Connecting talented professionals with their dream careers. Find your next opportunity with Jobify.
+              Connecting talented professionals with their dream careers. Find
+              your next opportunity with Jobify.
             </p>
             <div className="flex space-x-4">
               <motion.a
@@ -99,25 +103,39 @@ const Footer = () => {
 
           {/* Quick links */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 text-green-500">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 text-green-500">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-green-500 transition duration-200">
+                <Link
+                  to="/"
+                  className="text-gray-400 hover:text-green-500 transition duration-200"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/jobs" className="text-gray-400 hover:text-green-500 transition duration-200">
+                <Link
+                  to="/jobs"
+                  className="text-gray-400 hover:text-green-500 transition duration-200"
+                >
                   Browse Jobs
                 </Link>
               </li>
               <li>
-                <Link to="/profile" className="text-gray-400 hover:text-green-500 transition duration-200">
+                <Link
+                  to="/profile"
+                  className="text-gray-400 hover:text-green-500 transition duration-200"
+                >
                   My Profile
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-gray-400 hover:text-green-500 transition duration-200">
+                <Link
+                  to="/about"
+                  className="text-gray-400 hover:text-green-500 transition duration-200"
+                >
                   About Us
                 </Link>
               </li>
@@ -126,25 +144,39 @@ const Footer = () => {
 
           {/* Resources */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 text-green-500">Resources</h3>
+            <h3 className="text-lg font-semibold mb-4 text-green-500">
+              Resources
+            </h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/help" className="text-gray-400 hover:text-green-500 transition duration-200">
+                <Link
+                  to="/help"
+                  className="text-gray-400 hover:text-green-500 transition duration-200"
+                >
                   Help Center
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-gray-400 hover:text-green-500 transition duration-200">
+                <Link
+                  to="/privacy"
+                  className="text-gray-400 hover:text-green-500 transition duration-200"
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-400 hover:text-green-500 transition duration-200">
+                <Link
+                  to="/terms"
+                  className="text-gray-400 hover:text-green-500 transition duration-200"
+                >
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-green-500 transition duration-200">
+                <Link
+                  to="/contact"
+                  className="text-gray-400 hover:text-green-500 transition duration-200"
+                >
                   Contact Us
                 </Link>
               </li>
@@ -160,7 +192,7 @@ const Footer = () => {
         </motion.div>
       </div>
     </motion.footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

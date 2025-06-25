@@ -12,11 +12,15 @@ Job Track is an innovative and user-friendly web application designed to streaml
 
 ## 🚀 Key Features
 
-- Select job listings by location, title, and company
-- Responsive, mobile-friendly design
-- Detailed job descriptions and requirements
-- Easy-to-navigate interface
-- Real-time updates to job listings
+- 🔍 Select and explore job from many company
+- 📄 View detailed job descriptions, requirements, and eligibility
+- 🧭 Easy-to-navigate interface for smooth user experience
+- 📲 Fully responsive design for mobile, tablet, and desktop
+- 🔄 Real-time updates to job postings and application status
+- 🔐 Register and log in with secure authentication
+- 👤 Update your user profile with personal and career info
+- 📝 Apply directly to jobs from the platform
+
 
 ## 📦 NPM Packages Used
 
